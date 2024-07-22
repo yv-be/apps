@@ -1,0 +1,220 @@
+/* General styles for the main page */
+* {
+    margin: 0px;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    
+    color: #343f46; /* Set font color to white */
+    height: 100%; /* Ensure the gradient covers the entire viewport height */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.top-banner {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center items horizontally */
+    width: 100%;
+    height: 150px;
+    background-color: #eeeeee;
+    color: #222222; /* Corrected color value */
+    text-align: center;
+    padding: 20px 0;
+    position: fixed; /* Ensure it stays at the top */
+    top: 0;
+    left: 0;
+    z-index: 1001; /* Make sure it is above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+    margin: 0;
+}
+
+
+.banner-icon {
+    width: 70px; /* Adjust the size as needed */
+    height: auto;
+    vertical-align: middle; /* Align the icon vertically with the text */
+    margin-right: 10px; /* Space between the icon and the text */
+}
+
+.header-title {
+    margin: 0;
+    font-size: 30px;
+}
+
+
+/* For mobile phones */
+
+@media only screen and (max-width: 600px) {
+    
+    .header-title {
+        margin: 0;
+        font-size: 20px;
+    }
+}
+
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    margin: 0;
+    padding: 20px 0;
+    border-radius: 0px;
+    color: white; /* Override font color inside the container */
+    text-align: center; /* Center align text */
+    background: white;
+    height: 70%; /* Adjust height to account for the fixed banner */
+    padding-top: 150px; /* Adjust based on the height of the banner */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.update-banner {
+    height: 30px;
+    width: 100%;
+    background-color: #ddd;
+    padding: 5px;
+    color: black;
+}
+
+.marquee {
+    font-size: 14px;
+    color: #222;
+    margin-top: 0;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons as needed */
+    color: #343f46;
+}
+
+.impressum-button,
+.datenschutz-button {
+    background-color: #687f8c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it is on top */
+    transition: background-color 0.3s;
+}
+
+
+.impressum-button:hove,
+.datenschutz-button:hover {
+    background-color: #576d7c;
+}
+
+.app-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Center the app items */
+    margin-top: 120px; /* Reduce top margin */
+    font-family: 'Arial', sans-serif;
+    width: 100%
+}
+
+
+.app-item {
+    flex: 1 1 calc(100% - 40px); /* Full width on mobile */
+    max-width: 50%; /* Ensure they don't exceed container */
+    padding: 20px;
+    background: #fff;
+    border: 3px solid #dddddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.app-item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.app-item img {
+    width: 100px; /* Adjust the size of the app containers */
+    height: auto;
+    margin-bottom: 10px; /* Space between icon and text */
+    max-widht: 100%;
+}
+
+.app-item span {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #343f46; /* Override font color for text below the icon */
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* For mobile phones */
+
+@media (max-width: 600px) {
+    .app-item {
+        flex: 100%; /* Two items per row on tablets */
+        max-width: 80%
+    }
+
+    .app-item img {
+        width: 50px; /* Adjust the size of the app containers */
+        height: auto;
+        margin-bottom: 10px; /* Space between icon and text */
+        max-widht: 100%;
+    }
+
+    .app-item span {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+        color: #343f46; /* Override font color for text below the icon */
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+.lower-banner {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center items horizontally */
+    width: 100%;
+    height: 80px;
+    background-color: #eeeeee;
+    color: #222222; /* Corrected color value */
+    text-align: center;
+    padding: 20px 0;
+    position: fixed; /* Ensure it stays at the top */
+    bottom: 0;
+    left: 0;
+    z-index: 1001; /* Make sure it is above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+    margin: 0 auto;
+}

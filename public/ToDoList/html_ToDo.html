@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+</html>
+</head>
+    <!-- ensuring the content looks good on different devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="css_ToDo.css">
+</head>
+<body>
+
+    <!-- back button -->
+    <button class="back-button" onclick="window.location.href='../index.html'"title="Back">&#8592; </button>
+    <div class="container">
+
+        <div class="todo-app">
+
+            <h2><img src="images/icon.png" alt="To-Do Icon" class="icon-image"> To-Do List</h2>
+
+            <div class="user-input">
+                <input type="text" id="input-box" placeholder="Add a task">
+                <button onclick="addTask()" title="Add">+ </button>
+            </div>
+
+            <ul id="list">
+                <!-- user adds tasks -->
+            </ul>
+        </div>
+    </div>
+    <script src="js_ToDo.js"></script>
+
+
+</body>
+</html>
+
+
