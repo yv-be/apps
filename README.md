@@ -4,4 +4,4 @@ My web page is a personal project that I started for fun and for the purpose of 
 
 The apps can be accessed via:
 
-https://webapps-yvonne-bender.vercel.app/
+https://webapps-yv-be.vercel.app/
