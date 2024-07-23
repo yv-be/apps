@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="css_Notes.css">
+</head>
+<body>
+    <!-- back button -->
+    <button class="back-button" onclick="window.location.href='../index.html'" title="Back">&#8592;</button>
+
+    <div class="list-container">
+        <ul id="list">                      
+        </ul>       
+    </div>
+
+    <button class="add-button" onclick="openPopup()" title="Add">+</button>
+
+    <div class="popup" id="popup">
+        <textarea id="noteInput" maxlength="200" placeholder="Write your note here..."></textarea>
+        <div class="popup-buttons">
+            <button onclick="addNote()">Add Note</button>
+            <button onclick="closePopup()">Cancel</button>
+        </div>
+    </div>
+
+    <div class="popup" id="editPopup">
+        <button class="close-button" onclick="closeEditPopup()">×</button>
+        <textarea id="editNoteInput" maxlength="200"></textarea>
+        <div class="popup-buttons">
+            <button id="saveButton">Save</button>
+            <button id="deleteButton">Delete</button> 
+        </div>
+    </div>
+    
+
+    <script src="js_Notes.js"></script>
+</body>
+</html>
