@@ -1,65 +1,87 @@
-//add elements with id from html
-const inputBox = document.getElementById("input-box") //user input field
-const listContainer = document.getElementById("list") //task list
+// Add elements with id from HTML
+const inputBox = document.getElementById("input-box"); // User input field
+const listContainer = document.getElementById("list"); // Task list
 
-//add tasks and event listeners
-function addTask(){ //Add button
-    if(inputBox.value === ''){ //if empty
+// Initialize an empty array to hold tasks
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+// Add tasks and event listeners
+function addTask() { // Add button
+    if (inputBox.value === '') { // If empty
         alert("You must write something!");
+    } else if (inputBox.value.length > 40) { // Check if input is longer than 40 characters
+        alert("Task must be 40 characters or less!");
+    } else if (tasks.length >= 15) { // Check if there are already 15 tasks
+        alert("You can only have 15 tasks at once!");
+    } else {
+        const task = {
+            text: inputBox.value,
+            checked: false
+        };
+        tasks.push(task);
+        renderTasks();
+        saveData();
     }
-    else{
-        let li = document.createElement('li');
-        li.innerHTML = inputBox.value;
-        li.title = inputBox.value; // Add tooltip for long text
-        listContainer.appendChild(li);
-
-        let span = document.createElement('span');
-        span.innerHTML = '\u00d7';
-        li.appendChild(span);
-
-    }
-    inputBox.value = '' //empty the input field after adding the task to the list
-    saveData();
+    inputBox.value = ''; // Empty the input field after adding the task to the list
 }
 
-//event listener for Enter key with Add button
+// Event listener for Enter key with Add button
 document.addEventListener("DOMContentLoaded", function() {
     inputBox.addEventListener("keydown", function(event) {
-        if (event.key === "Enter"){
+        if (event.key === "Enter") {
             addTask();
         }
-    }); 
+    });
 });
-
 
 function check(e) {
     if (e.target.tagName === "LI") { // If clicked on list element
-        e.target.classList.toggle("checked"); // Toggle between checked and unchecked
+        const index = Array.from(listContainer.children).indexOf(e.target);
+        tasks[index].checked = !tasks[index].checked; // Toggle between checked and unchecked
+        renderTasks();
         saveData();
     }
 }
 
 function remove(e) {
-    if (e.target.tagName === "SPAN") { // if clicked on span (cross symbol)
-        e.target.parentElement.remove();
+    if (e.target.tagName === "SPAN") { // If clicked on span (cross symbol)
+        const index = Array.from(listContainer.children).indexOf(e.target.parentElement);
+        tasks.splice(index, 1); // Remove the task from the array
+        renderTasks();
         saveData();
     }
 }
 
-//event listener for check and remove list elements
-listContainer.addEventListener("click", function(event) { //"click" is a predefined js event type
-    check(event); // handle check functionality
-    remove(event); // handle remove functionality
+// Event listener for check and remove list elements
+listContainer.addEventListener("click", function(event) { //"click" is a predefined JS event type
+    check(event); // Handle check functionality
+    remove(event); // Handle remove functionality
 }, false);
 
-
-//store user input locally
-
-function saveData(){
-    localStorage.setItem("data", listContainer.innerHTML);
+// Store user input locally
+function saveData() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-function showTask(){
-    listContainer.innerHTML = localStorage.getItem("data");
+// Render tasks from the array
+function renderTasks() {
+    listContainer.innerHTML = '';
+    tasks.forEach(task => {
+        let li = document.createElement('li');
+        li.textContent = task.text;
+        li.title = task.text; // Add tooltip for long text
+        if (task.checked) {
+            li.classList.add("checked");
+        }
+        let span = document.createElement('span');
+        span.innerHTML = '\u00d7';
+        li.appendChild(span);
+        listContainer.appendChild(li);
+    });
+}
+
+// Show tasks on page load
+function showTask() {
+    renderTasks();
 }
 showTask();

@@ -5,12 +5,15 @@ function openPopup() {
     const noteInput = document.getElementById('noteInput');
     noteInput.focus();
 
-    noteInput.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault(); // Prevent the default newline behavior
-            addNote();
-        }
-    });
+    noteInput.removeEventListener('keydown', handleNoteInput); // Remove existing listener if any
+    noteInput.addEventListener('keydown', handleNoteInput); // Add a new listener
+}
+
+function handleNoteInput(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent the default newline behavior
+        addNote();
+    }
 }
 
 function closePopup() {
@@ -47,12 +50,28 @@ function addNote() {
     const noteInput = document.getElementById('noteInput');
     const noteText = noteInput.value.trim();
 
-    if (noteText) {
-        createNoteElement(noteText);
-        noteInput.value = '';
-        closePopup();
-        saveData();
+    const ul = document.getElementById('list');
+    const notesCount = ul.getElementsByTagName('li').length;
+
+    if (!noteText) {
+        alert("Note cannot be empty.");
+        return;
     }
+
+    if (noteText.length > 80) {
+        alert("Note cannot be longer than 80 characters.");
+        return;
+    }
+
+    if (notesCount >= 20) {
+        alert("You can only have 20 notes at once.");
+        return;
+    }
+
+    createNoteElement(noteText);
+    noteInput.value = '';
+    closePopup();
+    saveData();
 }
 
 function createNoteElement(noteText) {
